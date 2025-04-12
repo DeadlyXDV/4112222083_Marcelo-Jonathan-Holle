@@ -12,6 +12,8 @@ include 'config.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <style>
         .table-container {
             border-radius: 8px;
@@ -38,7 +40,7 @@ include 'config.php';
         </div>
 
         <div class="table-container bg-white">
-            <table class="table table-striped table-hover mb-0">
+            <table id="dataSiswa" class="table table-striped table-hover mb-0">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">No</th>
@@ -89,8 +91,30 @@ include 'config.php';
         </footer>
     </div>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Initialize DataTables -->
+    <script>
+        $(document).ready(function() {
+            $('#dataSiswa').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json'
+                },
+                responsive: true,
+                columnDefs: [{
+                        orderable: false,
+                        targets: 6
+                    } // Disable sorting on action column
+                ]
+            });
+        });
+    </script>
 </body>
 
 </html>
